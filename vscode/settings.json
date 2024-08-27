@@ -1,0 +1,21 @@
+{
+    "cmake.sourceDirectory": "${workspaceFolder}/code",
+    "cmake.configureOnOpen": true,
+    "cmake.configureArgs": [
+        "-DBUILD_EXAMPLES=ON",
+        "-DBUILD_TESTS=OFF",
+        "-DWITH_CUDA=ON",
+        "-DOPENCV_MODULE=ON",
+        "-DCAMERA_MODULE=OFF",
+        "-DOPENGL_MODULE=ON",
+        "-DDNN_MODULE=ON",
+        "-DNVDIFFRAST_MODULE=ON",
+        "-DWITH_PYTHON=ON",
+    ],
+    "cmake.buildDirectory": "${workspaceFolder}/code/build",
+    "cmake.environment": {
+        "CUDAHOSTCXX": "/usr/bin/g++",
+        "CUDAHOSTCC": "/usr/bin/gcc",
+    },
+    "cmake.generator": "Unix Makefiles"
+}

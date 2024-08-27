@@ -1,0 +1,16 @@
+*.swp
+.remote-sync.json
+**/.vscode
+build
+**/.directory
+**/imgui.ini
+!code/imgui.ini
+**/.idea
+code/.cache
+default_*.profraw
+*.png
+**/__pycache__
+calibration.json
+cam_intrinsics.yaml
+*.code-workspace
+clean_files.sh

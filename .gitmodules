@@ -1,0 +1,13 @@
+[submodule "code/external/thirdparty/include/nanoflann"]
+	path = code/external/thirdparty/include/nanoflann
+	url = https://github.com/jlblancoc/nanoflann.git
+[submodule "code/external/thirdparty/include/stb"]
+	path = code/external/thirdparty/include/stb
+	url = https://github.com/nothings/stb.git
+[submodule "code/external/thirdparty/include/json"]
+	path = code/external/thirdparty/include/json
+	url = https://github.com/nlohmann/json.git
+[submodule "code/external/thirdparty/include/imgui"]
+	path = code/external/thirdparty/include/imgui
+	url = https://github.com/ocornut/imgui.git
+	branch = docking

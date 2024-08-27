@@ -1,0 +1,338 @@
+Dataset: 
+  # Name of the dataset 
+  # this is used within the Dataset loader to load dataset-specific data
+  name: "h2o"
+  # path to the root directory of the dataset or 
+  # if it is just a sequence
+  # the sequence path
+  path: "/home/virth/repositories/promotion/projects/reconstruction-lib/data/h2o/"
+  # txt file which contains all images that are used for evaluation
+  # Example of a line within the file in H2O:
+  # subject3/h2/7/cam4/rgb/000000.png 
+  # image_file: "/path/to/datasets/h2o/label_split/pose_test_manual.txt"
+  # image_file: "/path/to/datasets/h2o/label_split/pose_train_cam0to4.txt"
+
+  # txt file which contains all video sequences that are loaded for evaluation
+  # Example of a line within the file in H2O:
+  # subject3/h2/7/cam4
+  sequence_file: "/home/virth/repositories/promotion/projects/reconstruction-lib/data/h2o/label_split/pose_train_tracking.txt"
+  # json file that contains manually
+  # precomputed PCA components of the MANO model
+  # if you want to use the standard PCA parameters instead, disable the "use_calculated_pca" flag
+  pca_file: "/media/virth/HDDSTORAGE/datasets/h2o/hoh_pca_filtered.json"
+  # Only used if tracking_mode=False and debug=True
+  # number of frames that are loaded for a given
+  # video sequence
+  num_frames: -1
+  # the first frame that is executed in the pipeline
+  # the index is related to the total number
+  # of images that is loaded within the DataLoader
+  start_frame: 0 # 108 # 1522
+  # the last frame that is executed in the pipeline
+  # the index is related to the total number
+  # of images that is loaded within the DataLoader
+  max_frame: -1
+  # in the debug mode, you can load specific
+  # video sequences given the 'path' variable instead
+  # of an 'evaluation_file'
+  debug: False
+  # in tracking mode, the dataloader 
+  # loads all images from a given video sequence
+  # otherwise, it loads single images specifically given in a file
+  # this means the images could also be random and not a video sequence
+  tracking_mode: False
+  # skip every nth frame in the list of loaded images
+  skip_frames: 0
+  # only use a single frame given by 'image_path'
+  debug_single_image: False
+  # path to a specific image
+  image_path: "/path/to/datasets/h2o/subject4/h1/1/cam4/rgb/000364.png"
+  # crop images before executing the handtracker
+  crop_bb: [-1,400,1200,900]
+
+# general configuration within the
+# tracking pipeline
+Pipeline:
+  # this is the output directory in which
+  # every generated data of the pipeline
+  # is saved into
+  data_output_folder: "/path/to/screenshots"
+  # make a screenshot of the
+  # scene every frame
+  save_screenshot: False
+  # whether to save the estimated
+  # MANO params every frame
+  save_MANO_params: False
+  # save the RGB image with
+  # OpenPose keypoints rendered
+  # on top
+  save_OpenPose: True
+
+
+MANO:
+  # use the calculated pca parameters given 
+  # in 'pca_file'
+  use_calculated_pca: True
+  # use anatomic pose parameters instead of
+  # original MANO pose parameters
+  use_anatomic_pose: True
+
+# configuration of the input image
+# for the YOLACT network
+Input:
+  # List of hand types that appear in the images
+  # 0 = left
+  # 1 = right
+  # -1 = let type by determined by network
+  hands: [-1,-1] # left, right
+  # crops the next frame according to the bounding box
+  # of previous frame
+  crop_to_bb: True
+  # pad the predicted bounding box coordinates
+  # of the PREVIOUS frame
+  # when cropping the image for the
+  # current frame
+  prev_bb_pad_x: 150
+  prev_bb_pad_y: 150
+
+# configuration for the YOLACT network
+Network:
+  # maxium size (width, height) of the image
+  # that is given as input to the network
+  max_size: 550
+  # preserve the aspect ratio of the network
+  # input image when rescaling to 'max_size'
+  preserve_aspect_ratio: True
+  # path to the base directory where the network weights
+  # are located
+  weights: "/home/virth/repositories/promotion/projects/reconstruction-lib/data/yolact_weights/h2o/h2o_finetuned_15_52k/"
+  # manually pad the predicted bounding box
+  # coordinates of the CURRENT frame
+  # to be used for further processing within
+  # the tracking pipeline
+  bb_pad_x: 5 # 30
+  bb_pad_y: 5 # 30
+
+# openpose is an additional hand keypoint
+# detector that is used for comparison
+OpenPose:  
+  # whether to use the OpenPose keypoint
+  # detector network
+  use: False
+  # pad the predicted bounding box coordinates
+  # of the CURRENT frame
+  # when cropping the input image for
+  # OpenPose 
+  bb_pad_x: 100
+  bb_pad_y: 100
+  # path to the network weights
+  # and protofile of OpenPose
+  weights: "/path/to/reconstruction-lib/data/openpose_weights/pose_iter_102000.caffemodel"
+  protofile: "/path/to/reconstruction-lib/data/openpose_weights/pose_deploy.prototxt"
+  # threshold that is applied to the
+  # confidence score of a keypoint to
+  # detect whether this keypoint is
+  # valid or not
+  threshold: 0.05
+  # scales the channels of the input
+  # image of OpenPose
+  scale:  0.003922
+
+# various flags for debugging
+# the pipeline
+Debug:
+  # sets the 'debug_' flag of the tracker
+  # enables general debugging output
+  # e.g. text
+  general: True
+  # do not automatically process the full video
+  # but stop at every image and continue
+  # manually
+  stop_through_sequence: True
+  # render the hands
+  show_hands: True
+  # render input RGB-D data
+  # as a colored pointcloud
+  show_rgbd: True
+  # render the points in correspondence
+  # space as a pointcloud
+  show_corr_img: False
+  # show correspondence image
+  # after cropping and masking
+  show_prepared_corr: False
+  # show lines between pointcloud
+  # points and MANO vertices
+  show_corr_lines: False
+  # show input image
+  show_input: False
+  # show network output
+  # (bbs, masks, corrs, ...)
+  show_output: False
+  # show keypoints from OpenPose
+  # this only holds if Openpose
+  # is enabled
+  show_keypoints: True
+  # draw MANO joints over
+  # MANO surface such that
+  # they become visible
+  highlight_joints: False
+  # draw MANO surface over
+  # everything else
+  highlight_mesh: True
+  # render an additional
+  # checkerboard plane into
+  # the scene
+  #TODO: false?
+  show_plane: True
+
+# Configuration for generating
+# correspondences
+Correspondences:
+  # normal threshold along the z-axis
+  # if point.z() < thresh
+  # the correspondence will be pruned
+  pc_normal_thresh: 0.1 # 0.1
+  # depth threshold
+  # if point.z() - median_depth > thresh
+  # the correspondence will be pruned
+  pc_dist_thresh: 0.15 # 0.2
+  # nearest neighbor threshold
+  # if point - vertex > thresh
+  # the correspondence will be pruned
+  nn_dist_thresh: 0.1 # 0.15
+
+# Configuration for registering hands
+Registration:
+  # number of iterations
+  iterations: 1 # 10
+  # whether to manually compute the
+  # translation again after
+  # Procrustes matching
+  register_translation: True
+  register_rotation: True
+
+# Configuration for MANO parameter
+# optimization
+Optimization:
+  # whether to split the optimization stage
+  # into stage 0, 1, 2, ...
+  separate_stages: True
+  # whether to register and optimize different hands in parallel
+  # will disable show_corr_img and show_corr_lines
+  multithreading: False
+  # Whether to apply flip flop optimization
+  # first fixing MANO rot+trans and only optimize shape+pose
+  # then fixing MANO shape+pose and optimize rot+trans
+  use_flip_flop: True
+  # the tracking is considered as 'failed'
+  # if the relative loss between current frame and last frame
+  # exceeds this threshold 
+  loss_relative_threshold: 2 # 5 # 100, 1000 
+  # the tracking is considered as 'failed'
+  # if the absolute loss of the current frame
+  # exceeds this threshold 
+  loss_absolute_threshold: 1 # 2 # 60
+  # how many iterations the whole optimization stage
+  # (including stage 0,1,2, ...)
+  # is running
+  outer_iterations: 1 # 3
+  # number of iterations for the LBFGS optimizer
+  lbfgs_inner_iterations: 5
+  # number of iterations for the LBFGS optimizer
+  # in the first frame (or if tracking is lost)
+  lbfgs_inner_iterations_initialization: 25
+  # maximum number of iterations for the Adam optimizer
+  adam_inner_iterations: 50 # 50
+  # maximum number of iterations for the Adam optimizer
+  # in the first frame (or if tracking is lost)
+  adam_inner_iterations_initialization: 200 # 50
+  # terminate optimization earlier if
+  # (last param) - (cur param) < eps
+  adam_termination_eps: 0.001
+  # adam learning rate of the first frame
+  # (or if tracking is lost)
+  adam_lr_initialization: 0.01
+  # adam learning rate
+  adam_lr: 0.01
+  # adam weight decay
+  adam_weight_decay: 0
+  # number of epochs (= adam iterations)
+  # of the first frame (or if tracking is lost)
+  # that have to pass until the
+  # learning rate scheduler lowers the learning rate
+  # by a factor of 'step_size'
+  adam_lr_epochs_initial: 50
+  # number of epochs
+  adam_lr_epochs: 20
+  # adap learning rate scheduler multiplies
+  # learning rate by this factor
+  adam_lr_step_size: 0.9
+  # -------------------------------------
+  # ------- Optimization weights --------
+  # -------------------------------------
+  data_weight: 7.5 # 10
+  silhouette_weight: 0.01 # 0.3 # 0.2 # 0.6
+
+  param_regularizer_shape_weight: 0.01 # 0.1
+  param_regularizer_pose_weight: 0.001 # 0.0001 # 0.1
+
+  # temporal term stuff
+  temp_regularizer_trans_weight: 0.0001
+  temp_regularizer_shape_weight: 0.01
+  temp_regularizer_rot_weight: 0.0001
+  temp_regularizer_pose_weight: 0.001
+
+# uncertainty visualization
+Visualization:
+  enable: True
+  # 2d error threshold 
+  # if 2d error > thresh then
+  # pixel is an outlier
+  pixel_thresh: 2
+  # fraction threshold
+  # if fraction of outliers exceeds this
+  # threshold then the corresponding
+  # MANO joint is errorenous
+  pixel_fraction: 0.4
+  # 3D error threshold
+  # if 3d error > thresh then
+  # MANO vertex is an outlier
+  depth_thresh: 0.1
+  # fraction threshold
+  # if fraction of outliers exceeds
+  # this threshold then the corresponding
+  # MANO joint is errorenous
+  depth_fraction: 0.5
+  # fraction threshold
+  # if fraction of visible vertices falls
+  # below this threshold then corresponding
+  # MANO joint is unobserved
+  visible_fraction: 0.08
+  # separate 2D and 3D threshold by
+  # assigning different colors
+  separate_px_and_depth: True
+
+# enables benchmark mode in which
+# the pipeline parameters are saved
+# (for online server evaluation)
+# end metrics are computed
+Benchmark:
+  enable: False
+  # whether to compute metrics
+  compute_metrics: False
+  # enable H2O metrics
+  H2OBenchmark: True
+  # enable HO3D metrics
+  HO3DBenchmark: False
+  # enable H2O3D metrics
+  H2O3DBenchmark: True
+  # load previously saved pipeline parameters
+  # to resume benchmark
+  load_predictions: True
+  # save the metrics
+  save: False
+  # path to the previously saved pipeline parameters (in .json format)
+  prediction_path: ""
+  # start benchmark at this frame index
+  start_frame: 0 # 5113 # 14643
+

@@ -1,0 +1,10 @@
+# Exclude files in build directory but not directory itself
+build/
+build
+
+cmake.sh
+envs.sh
+
+# Exclude data-related files
+*.jpg
+*.png
