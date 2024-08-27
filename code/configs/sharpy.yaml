@@ -5,7 +5,7 @@ Dataset:
   # path to the root directory of the dataset or 
   # if it is just a sequence
   # the sequence path
-  path: "/home/virth/repositories/promotion/projects/reconstruction-lib/data/h2o/"
+  path: "<path-to-sharpy-repository>/data/h2o/"
   # txt file which contains all images that are used for evaluation
   # Example of a line within the file in H2O:
   # subject3/h2/7/cam4/rgb/000000.png 
@@ -15,11 +15,11 @@ Dataset:
   # txt file which contains all video sequences that are loaded for evaluation
   # Example of a line within the file in H2O:
   # subject3/h2/7/cam4
-  sequence_file: "/home/virth/repositories/promotion/projects/reconstruction-lib/data/h2o/label_split/pose_train_tracking.txt"
+  sequence_file: "<path-to-sharpy-repository>/data/h2o/label_split/pose_train_tracking.txt"
   # json file that contains manually
   # precomputed PCA components of the MANO model
   # if you want to use the standard PCA parameters instead, disable the "use_calculated_pca" flag
-  pca_file: "/media/virth/HDDSTORAGE/datasets/h2o/hoh_pca_filtered.json"
+  pca_file: "<path-to-sharpy-repository>/data/h2o/hoh_pca_filtered.json"
   # Only used if tracking_mode=False and debug=True
   # number of frames that are loaded for a given
   # video sequence
@@ -46,7 +46,7 @@ Dataset:
   # only use a single frame given by 'image_path'
   debug_single_image: False
   # path to a specific image
-  image_path: "/path/to/datasets/h2o/subject4/h1/1/cam4/rgb/000364.png"
+  image_path: ""
   # crop images before executing the handtracker
   crop_bb: [-1,400,1200,900]
 
@@ -105,7 +105,7 @@ Network:
   preserve_aspect_ratio: True
   # path to the base directory where the network weights
   # are located
-  weights: "/home/virth/repositories/promotion/projects/reconstruction-lib/data/yolact_weights/h2o/h2o_finetuned_15_52k/"
+  weights: "<path-to-sharpy-repository>/data/yolact_weights/"
   # manually pad the predicted bounding box
   # coordinates of the CURRENT frame
   # to be used for further processing within
@@ -127,8 +127,8 @@ OpenPose:
   bb_pad_y: 100
   # path to the network weights
   # and protofile of OpenPose
-  weights: "/path/to/reconstruction-lib/data/openpose_weights/pose_iter_102000.caffemodel"
-  protofile: "/path/to/reconstruction-lib/data/openpose_weights/pose_deploy.prototxt"
+  weights: "<path-to-sharpy-repository>/openpose_weights/pose_iter_102000.caffemodel"
+  protofile: "<path-to-sharpy-repository>/openpose_weights/pose_deploy.prototxt"
   # threshold that is applied to the
   # confidence score of a keypoint to
   # detect whether this keypoint is
