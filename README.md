@@ -11,8 +11,6 @@ ShaRPy is a RGB-D Shape Reconstruction and hand Pose tracking system, which prov
 
 
 
-[[_TOC_]]
-
 # Structure
 This project is structured as follows:
 * `data`: Contains example data
