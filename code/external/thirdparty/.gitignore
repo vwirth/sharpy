@@ -16,9 +16,6 @@ glfw
 assimp
 Torch
 torch_tensorrt
-include/nanoflann
-include/stb
-include/imgui
 rapidcsv
 TensorRT-8.4.2.4
 
