@@ -1,6 +1,6 @@
 ![sharpy](assets/sharpy.png)
 
-### [Project Page](https://vwirth.github.io/sharpy) | [Paper](https://openaccess.thecvf.com/content/ICCV2023W/CVAMD/html/Wirth_ShaRPy_Shape_Reconstruction_and_Hand_Pose_Estimation_from_RGB-D_with_ICCVW_2023_paper.html) |  [Arxiv](https://arxiv.org/abs/2303.10042)
+### [Project Page 🌐](https://vwirth.github.io/sharpy) | [Paper 🗒️](https://openaccess.thecvf.com/content/ICCV2023W/CVAMD/html/Wirth_ShaRPy_Shape_Reconstruction_and_Hand_Pose_Estimation_from_RGB-D_with_ICCVW_2023_paper.html) |  [Arxiv 📚](https://arxiv.org/abs/2303.10042)
 
 # ShaRPy Documentation
 
