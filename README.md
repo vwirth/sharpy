@@ -396,6 +396,7 @@ This work used the German Research Foundation (DFG) funded major instrument (ref
 The authors gratefully acknowledge the scientific support and HPC resources provided by the Erlangen National High Performance Computing Center of the Friedrich-Alexander-Universität Erlangen-Nürnberg. 
 
 Furthermore, the authors would like to thank the following people:
+* Jasmin Hacker for her highly valuable contributions to the quality of this framework and its documentation
 * [Nikolai Hofmann](https://github.com/nihofm), [Laura Fink](https://lorafib.github.io/) and [Linus Franke](https://lfranke.github.io/) for providing the CppGL framework that our code is based on
 * [Darius Rückert](https://github.com/darglein/personal), who gave us advice on the implementation details of [Saiga](https://github.com/darglein/saiga), of which we use the datatype interface between Eigen and GLM
 * The authors and contributors of [Yolact](https://github.com/dbolya/yolact), of which we use the code for training the network parameters
