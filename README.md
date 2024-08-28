@@ -78,7 +78,7 @@ git submodule update --remote --recursive
 In case this command fails, it is very likely that the provided submodule URL is wrong. In this case, you need to set the URL correctly inside your `.gitmodules` file and the `.git/config` file.
 
 ## Cuda
-CUDA >= 10.2, <=11.8 is required.
+CUDA >= 10.2, <=11.6 is required.
 Make sure that you have the right version of Cuda and the respective Compiler. Also make sure that your OS is listed.
 https://docs.nvidia.com/cuda/cuda-installation-guide-linux/index.html#system-requirements
 
