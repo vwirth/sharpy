@@ -9,7 +9,9 @@ ShaRPy is a RGB-D Shape Reconstruction and hand Pose tracking system, which prov
 
 ![sharpy_viewer](assets/sharpy_viewer.gif)
 
-
+# Disclaimer
+**This repository was forked from a whole research framework.**
+**Thus, you may find lots of files and dependencies that are not relevant for specifically the sharpy executable.**
 
 # Structure
 This project is structured as follows:
