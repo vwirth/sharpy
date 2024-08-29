@@ -178,7 +178,7 @@ ln -s /dev/shm/reclib.dir .
     * The model description is provided [here](https://github.com/CMU-Perceptual-Computing-Lab/openpose/blob/master/models/hand/pose_deploy.prototxt). Download it and adjust the respective `OpenPose/protofile` option in `configs/sharpy.yaml`
     * The model weights are provided [here](http://posefs1.perception.cs.cmu.edu/OpenPose/models/hand/pose_iter_102000.caffemodel), alternatively you can use the scripts provided by the [OpenPose Repository](https://github.com/CMU-Perceptual-Computing-Lab/openpose/blob/master/models/getModels.sh). Download it and adjust the respective `OpenPose/weights` option in `configs/sharpy.yaml`
 * The **TensorRT** model weights of the adapted [Yolact](https://github.com/dbolya/yolact) model are given in `data/yolact_weights.zip`. Make sure to unzip it and adjust the respective `Network/weights` option in `configs/sharpy.yaml`. **Please note that they can only be successfully loaded if you install the exact TensorRT version (see documentation above)**
-* The MANO model can be downloaded from [here](https://mano.is.tuebingen.mpg.de). Extract the `.zip` file such that you should have a `models/MANO_LEFT.pkl` and `models/MANO_RIGHT.pkl` file. **To load them in the program, they must be converted to `.npz`**. You can use the script provided in `scripts/pkl2npz.py` to do so.
+* The MANO model can be downloaded from [here](https://mano.is.tuebingen.mpg.de). Extract the `.zip` file such that you should have a `models/mano/MANO_LEFT.pkl` and `models/mano/MANO_RIGHT.pkl` file. **To load them in the program, they must be converted to `.npz`**. You can use the script provided in `scripts/pkl2npz.py` to do so.
 
 # Running the program
 Make sure you update the paths in `configs/sharpy.yaml`.

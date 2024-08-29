@@ -78,12 +78,13 @@ void assert_shape(const cnpy::NpyArray& m,
 }
 
 std::string find_data_file(const std::string& data_path) {
-  static const std::string TEST_PATH = std::string("data/models/smplx/uv.txt");
+  static const std::string TEST_PATH =
+      std::string("data/models/mano/MANO_LEFT.npz");
   static const int MAX_LEVELS = 6;
   static std::string data_dir_saved = "\n";
   if (data_dir_saved == "\n") {
     data_dir_saved.clear();
-    const char* env = std::getenv("SMPLX_DIR");
+    const char* env = std::getenv("MANO_DIR");
     if (env) {
       // use environmental variable if exists and works
       data_dir_saved = env;
