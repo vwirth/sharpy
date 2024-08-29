@@ -80,6 +80,7 @@
 #define _RECLIB_ASSERT_NE(x, y)
 #define _RECLIB_ASSERT_LE(x, y)
 #define _RECLIB_ASSERT_LT(x, y)
+#define _RECLIB_ASSERT_GT(x, y)
 #endif
 
 #endif

@@ -131,13 +131,13 @@ set(PROJECT_LIBS
 
 foreach(lib IN LISTS OpenCV_LIBS)
     # foreach(accepted_lib IN LISTS PROJECT_LIBS)
-    #     if("${lib}" STREQUAL "${accepted_lib}")
-    #         # message(STATUS "here is a lib: ${lib}")
-    #         PackageHelperTarget(${lib} OPENCV_FOUND)
-    #         break()
-    #     else()
-    #         # message(STATUS "REJECTED ${lib}")
-    #     endif()
+    # if("${lib}" STREQUAL "${accepted_lib}")
+    # # message(STATUS "here is a lib: ${lib}")
+    # PackageHelperTarget(${lib} OPENCV_FOUND)
+    # break()
+    # else()
+    # # message(STATUS "REJECTED ${lib}")
+    # endif()
     # endforeach()
     PackageHelperTarget(${lib} OPENCV_FOUND)
 endforeach()
@@ -145,34 +145,33 @@ endforeach()
 # opencv has a bunch of unnecessary libs that we do not need to link
 # the following lines instead of the previous three decreasea the number of linked opencv libs from 65 to 12
 # However, no link-time improvement can be measured
-#set(PROJECT_LIBS
-#    "opencv_core"
-#    "opencv_imgproc"
-#    "opencv_cudaarithm"
-#    "opencv_cudaimgproc"
+# set(PROJECT_LIBS
+# "opencv_core"
+# "opencv_imgproc"
+# "opencv_cudaarithm"
+# "opencv_cudaimgproc"
 #
-#    # "opencv_video"
-#    "opencv_cudev"
-#    "opencv_highgui"
-#    "opencv_imgcodecs"
-#    "opencv_cudawarping"
-#    "opencv_features2d"
+# # "opencv_video"
+# "opencv_cudev"
+# "opencv_highgui"
+# "opencv_imgcodecs"
+# "opencv_cudawarping"
+# "opencv_features2d"
 #
-#    # "opencv_videoio"
-#)
+# # "opencv_videoio"
+# )
 #
-#foreach(lib IN LISTS OpenCV_LIBS)
-#    foreach(accepted_lib IN LISTS PROJECT_LIBS)
-#        if("${lib}" STREQUAL "${accepted_lib}")
-#            message(STATUS "here is a lib: ${lib}")
-#            PackageHelperTarget(${lib} OPENCV_FOUND)
-#            break()
-#        else()
-#            message(STATUS "REJECTED ${lib}")
-#        endif()
-#    endforeach()
-#endforeach()
-
+# foreach(lib IN LISTS OpenCV_LIBS)
+# foreach(accepted_lib IN LISTS PROJECT_LIBS)
+# if("${lib}" STREQUAL "${accepted_lib}")
+# message(STATUS "here is a lib: ${lib}")
+# PackageHelperTarget(${lib} OPENCV_FOUND)
+# break()
+# else()
+# message(STATUS "REJECTED ${lib}")
+# endif()
+# endforeach()
+# endforeach()
 unset(DEBUG_INSTALLATION)
 unset(BUILD_SHARED_LIBS)
 
