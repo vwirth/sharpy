@@ -1,5 +1,4 @@
 from __future__ import print_function
-from lib2to3.pytree import convert
 import numpy as np
 import pickle
 import sys
