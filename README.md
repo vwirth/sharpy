@@ -9,6 +9,35 @@ ShaRPy is a RGB-D Shape Reconstruction and hand Pose tracking system, which prov
 
 ![sharpy_viewer](assets/sharpy_viewer.gif)
 
+
+
+# Table of Contents
+* [Disclaimer](#disclaimer)
+* [Structure of this Repository](#structure)
+* [CMake Modules](#modules)
+* [Dependencies](#dependencies)
+  * [OpenGL Dependencies](#opengl)
+  * [External Submodules](#submodules)
+  * [Cuda](#cuda)
+  * [CuDNN](#cudnn-manual-installation)
+  * [TensorRT](#tensorrt)
+  * [Others (Automatic CMake Installation)](#others-automatic-installation)
+* [Compiling](#compiling)
+  * [Improve the build time](#improve-build-time)
+* [Data](#data)
+* [Program Execution](#program-execution)
+* [Viewer Controls](#viewer-controls)
+* [Optional Dependencies](#optional-dependencies)
+* [Manual Installations](#manual-installations)
+  * [OpenCV](#opencv-manual-installation)
+  * [Eigen3](#eigen3-manual-installation)
+  * [Freenect2 for Kinect V2](#freenect2---api-for-kinect-v2-optional)
+  * [K4a for Kinect V4 Azure](#k4a---api-for-kinect-v4-azure-optional)
+* [Known Issues](#known-issues)
+* [Acknowledgements](#acknowledgements)
+* [Citation](#citation)
+
+
 # Disclaimer
 **This repository was forked from a whole research framework.**
 **Thus, you may find lots of files and dependencies that are not relevant for specifically the sharpy executable.**
@@ -37,7 +66,7 @@ The following modules are available:
 * `CAMERA_MODULE` (optional): Use APIs for controlling Kinect Cameras (e.g. V2 and Azure V4)
 
 
-# Dependencies/Requirements
+# Dependencies
 
 Install cmake and git:
 ```
@@ -120,7 +149,7 @@ export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/lib/cuda/lib64/
 export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:<reconstruction-lib>/code/external/thirdparty/Torch/source/lib
 ```
 
-## Done
+## Others (Automatic Installation)
 
 **All other necessary requirements should be installed automatically as soon as you run the Cmake configure command.**
 See below for information on how to manually install them in case something goes wrong.
@@ -183,14 +212,14 @@ ln -s /dev/shm/reclib.dir .
 Make sure to unzip it and adjust the respective `Network/weights` option in `configs/sharpy.yaml`. **Please note that they can only be successfully loaded if you install the exact TensorRT version (see documentation above)**
 * The MANO model can be downloaded from [here](https://mano.is.tuebingen.mpg.de). Extract the `.zip` file such that you should have a `models/mano/MANO_LEFT.pkl` and `models/mano/MANO_RIGHT.pkl` file. **To load them in the program, they must be converted to `.npz`**. You can use the script provided in `scripts/pkl2npz.py` to do so.
 
-# Running the program
+# Program Execution
 Make sure you update the paths in `configs/sharpy.yaml`, e.g. the `<path-to-sharpy-repository>` paths that are indicated in the yaml file.
 Run the binary, preferrably from the `code` directory such that the default `imgui.ini` file for the GUI is loaded:
 ```
 cd code && ./build/examples/OFF/bin/sharpy
 ```
 
-# Controlling the Viewer
+# Viewer Controls
 * You can move around with your mouse and by using the keys `W` `A` `S` `D`.
 * The GUI debug interface can be enabled with `Tab`
 * Depending on your settings in `configs/sharpy.yaml` the optimization stages are split into several debug stages, which you can trigger by pressing the numbers `1` `2` `3` `4` `5` in their ascending order.
@@ -200,6 +229,8 @@ If you want to use the Camera module, install
 * libfreenect2
 * k4a
 See below for a guide.
+
+# Manual Installations
 
 ## OpenCV (Manual Installation)
 **Follow this case in case the automatic installation of OpenCV in `cmake/Dependencies_opencv.cmake` did not work.**
